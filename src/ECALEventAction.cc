@@ -1,5 +1,6 @@
 #include "ECALEventAction.hh"
 #include "emCalorimeterHit.hh"
+#include "ECALConstants.hh"
 
 #include "G4Event.hh"
 #include "G4RunManager.hh"
@@ -46,9 +47,9 @@ G4VHitsCollection* GetHC(const G4Event* event, G4int collId) {
 ECALEventAction::ECALEventAction()
 : G4UserEventAction(),
   fCalHCID  {{ -1 }},
-  fCalEdep{{ vector<G4double>(9.,0.) }},
-  fCalRow{{ vector<G4double>(9., 0.) }},
-  fCalColumn{{ vector<G4double>(9., 0.) }}
+  fCalEdep{{ vector<G4double>(kNofCells, 0.) }},
+  fCalRow{{ vector<G4double>(kNofCells, 0.) }},
+  fCalColumn{{ vector<G4double>(kNofCells, 0.) }}
       // std::array<T, N> is an aggregate that contains a C array.
       // To initialize it, we need outer braces for the class itself
       // and inner braces for the C array

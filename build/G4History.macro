@@ -29,3 +29,5 @@
 /vis/viewer/set/autoRefresh true
 /vis/viewer/refresh
 /vis/verbose warnings
+/run/beamOn 1
+/vis/scene/notifyHandlers scene-0

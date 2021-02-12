@@ -1,5 +1,6 @@
 #include "emCalorimeterSD.hh"
 #include "emCalorimeterHit.hh"
+#include "ECALConstants.hh"
 
 #include "G4HCofThisEvent.hh"
 #include "G4TouchableHistory.hh"
@@ -34,8 +35,8 @@ void emCalorimeterSD::Initialize(G4HCofThisEvent* hce)
   hce->AddHitsCollection(fHCID,fHitsCollection);
 
   // fill calorimeter hits with zero energy deposition
-  for (auto column=0;column<3;column++) {
-    for (auto row=0;row<3;row++) {
+  for (auto column=0;column<kNofCrystals;column++) {
+    for (auto row=0;row<kNofCrystals;row++) {
       fHitsCollection->insert(new emCalorimeterHit());
     }
   }

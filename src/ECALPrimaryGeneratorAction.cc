@@ -17,21 +17,8 @@ ECALPrimaryGeneratorAction::ECALPrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(),
    fParticleGun(nullptr)
 {
-  G4int nofParticles = 2;
+  G4int nofParticles = 1;
   fParticleGun = new G4ParticleGun(nofParticles);
-
-  // default particle kinematic
-  //
-  auto particleDefinition
-    = G4ParticleTable::GetParticleTable()->FindParticle("pi0");
-  fParticleGun->SetParticleDefinition(particleDefinition);
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-
-  auto mass = particleDefinition->GetPDGMass();
-  G4double pp = 10.*MeV;
-  auto ekin = std::sqrt(pp*pp+mass*mass)-mass;
-
-  fParticleGun->SetParticleEnergy(ekin);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -47,34 +34,22 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   // This function is called at the begining of event
 
-  // In order to avoid dependence of PrimaryGeneratorAction
-  // on DetectorConstruction class we get world volume
-  // from G4LogicalVolumeStore
+  // default particle kinematic
   //
-  G4double worldZHalfLength = 0.;
-  auto worldLV = G4LogicalVolumeStore::GetInstance()->GetVolume("World");
+  auto particleDefinition
+    = G4ParticleTable::GetParticleTable()->FindParticle("pi0");
+  fParticleGun->SetParticleDefinition(particleDefinition);
+  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
 
-  // Check that the world volume has box shape
-  G4Box* worldBox = nullptr;
-  if (  worldLV ) {
-    worldBox = dynamic_cast<G4Box*>(worldLV->GetSolid());
-  }
+  auto mass = particleDefinition->GetPDGMass();
+  G4double pp = 10.*MeV;
+  auto ekin = std::sqrt(pp*pp+mass*mass)-mass;
 
-  if ( worldBox ) {
-    worldZHalfLength = worldBox->GetZHalfLength();
-  }
-  else  {
-    G4ExceptionDescription msg;
-    msg << "World volume of box shape not found." << G4endl;
-    msg << "Perhaps you have changed geometry." << G4endl;
-    msg << "The gun will be place in the center.";
-    G4Exception("B4PrimaryGeneratorAction::GeneratePrimaries()",
-      "MyCode0002", JustWarning, msg);
-  }
+  fParticleGun->SetParticleEnergy(ekin);
 
   // Set gun position
   fParticleGun
-    ->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
+    ->SetParticlePosition(G4ThreeVector(0., 0., -13.8*cm));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }

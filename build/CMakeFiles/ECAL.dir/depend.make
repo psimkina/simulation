@@ -390,6 +390,7 @@ CMakeFiles/ECAL.dir/src/ECALActionInitialization.cc.o: /local/home/ps263053/Gean
 CMakeFiles/ECAL.dir/src/ECALActionInitialization.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/tls.hh
 CMakeFiles/ECAL.dir/src/ECALActionInitialization.cc.o: ../src/ECALActionInitialization.cc
 
+CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: ../include/ECALConstants.hh
 CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: ../include/ECALDetectorConstruction.hh
 CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: ../include/emCalorimeterHit.hh
 CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: ../include/emCalorimeterSD.hh
@@ -560,6 +561,7 @@ CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: /local/home/ps263053/Gean
 CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/PTL/Utility.hh
 CMakeFiles/ECAL.dir/src/ECALDetectorConstruction.cc.o: ../src/ECALDetectorConstruction.cc
 
+CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: ../include/ECALConstants.hh
 CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: ../include/ECALEventAction.hh
 CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: ../include/emCalorimeterHit.hh
 CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h
@@ -1437,6 +1439,7 @@ CMakeFiles/ECAL.dir/src/emCalorimeterHit.cc.o: /local/home/ps263053/Geant4/geant
 CMakeFiles/ECAL.dir/src/emCalorimeterHit.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/tls.hh
 CMakeFiles/ECAL.dir/src/emCalorimeterHit.cc.o: ../src/emCalorimeterHit.cc
 
+CMakeFiles/ECAL.dir/src/emCalorimeterSD.cc.o: ../include/ECALConstants.hh
 CMakeFiles/ECAL.dir/src/emCalorimeterSD.cc.o: ../include/emCalorimeterHit.hh
 CMakeFiles/ECAL.dir/src/emCalorimeterSD.cc.o: ../include/emCalorimeterSD.hh
 CMakeFiles/ECAL.dir/src/emCalorimeterSD.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h

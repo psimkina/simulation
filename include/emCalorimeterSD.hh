@@ -18,7 +18,7 @@ class emCalorimeterSD : public G4VSensitiveDetector
     virtual ~emCalorimeterSD();
 
     virtual void Initialize(G4HCofThisEvent*HCE);
-    virtual G4bool ProcessHits(G4Step*aStep,G4TouchableHistory*ROhist);
+    virtual G4bool ProcessHits(G4Step*aStep, G4TouchableHistory*ROhist);
 
   private:
     emCalorimeterHitsCollection* fHitsCollection;

@@ -1,5 +1,6 @@
 #include "ECALDetectorConstruction.hh"
 #include "emCalorimeterSD.hh"
+#include "ECALConstants.hh"
 
 #include "G4NistManager.hh"
 #include "G4Box.hh"
@@ -34,8 +35,8 @@ G4VPhysicalVolume* ECALDetectorConstruction::Construct()
 
   // Detector Parameters
   G4double cryst_dX = 2.2*cm, cryst_dY = 2.2*cm, cryst_dZ = 23*cm;
-  G4int nb_cryst = 3;
-  G4int nb_plns = 1;
+  G4int nb_cryst = kNofCrystals;
+  G4int nb_plns = kNofPlanes;
 
   G4double plns_dX = cryst_dX*nb_cryst, plns_dY = cryst_dY*nb_cryst, plns_dZ = cryst_dZ*nb_plns;
 

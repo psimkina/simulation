@@ -221,6 +221,9 @@ EXPAT_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 EXPAT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libexpat.so
 
+//No help, variable specified on the command line.
+GEANT4_BUILD_MULTITHREADED:UNINITIALIZED=OFF
+
 //The directory containing a CMake configuration file for Geant4.
 Geant4_DIR:PATH=/local/home/ps263053/Geant4/geant4.10.07-install/lib/Geant4-10.7.0
 
