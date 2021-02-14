@@ -31,3 +31,6 @@
 /vis/verbose warnings
 /run/beamOn 1
 /vis/scene/notifyHandlers scene-0
+/run/beamOn 1
+/run/beamOn 1
+/run/beamOn 1

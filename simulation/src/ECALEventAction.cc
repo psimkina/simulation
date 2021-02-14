@@ -165,7 +165,7 @@ void ECALEventAction::EndOfEventAction(const G4Event* event)
   array<G4String, kDim> calName = {{ "EM" }};
   for (G4int iDet = 0; iDet < kDim; ++iDet) {
     G4cout << calName[iDet] << " Calorimeter has " << totalCalHit[iDet] << " hits."
-           << " Total Edep is " << totalCalEdep[iDet]/MeV << " (MeV)" << G4endl;
+           << " Total Edep is " << totalCalEdep[iDet]/GeV << " (GeV)" << G4endl;
   }
 }
 
