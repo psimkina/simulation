@@ -52,7 +52,7 @@ G4bool emCalorimeterSD::ProcessHits(G4Step* step, G4TouchableHistory*)
   auto touchable = step->GetPreStepPoint()->GetTouchable();
   auto rowNo = touchable->GetCopyNumber(2);
   auto columnNo = touchable->GetCopyNumber(3);
-  auto hitID = 3*columnNo+rowNo;
+  auto hitID = kNofCrystals*columnNo+rowNo;
   auto hit = (*fHitsCollection)[hitID];
 
   // check if it is first touch

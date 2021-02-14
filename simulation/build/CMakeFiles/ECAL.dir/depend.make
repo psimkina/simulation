@@ -924,6 +924,7 @@ CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: /local/home/ps263053/Geant4/geant4
 CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/PTL/Utility.hh
 CMakeFiles/ECAL.dir/src/ECALEventAction.cc.o: ../src/ECALEventAction.cc
 
+CMakeFiles/ECAL.dir/src/ECALPrimaryGeneratorAction.cc.o: ../include/ECALConstants.hh
 CMakeFiles/ECAL.dir/src/ECALPrimaryGeneratorAction.cc.o: ../include/ECALPrimaryGeneratorAction.hh
 CMakeFiles/ECAL.dir/src/ECALPrimaryGeneratorAction.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/CLHEP/Geometry/BasicVector3D.h
 CMakeFiles/ECAL.dir/src/ECALPrimaryGeneratorAction.cc.o: /local/home/ps263053/Geant4/geant4.10.07-install/include/Geant4/CLHEP/Geometry/Normal3D.h

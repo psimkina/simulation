@@ -32,16 +32,19 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
 
   // Creating ntuple
   if ( fEventAction ) {
-    analysisManager->CreateNtuple("ECAL", "Hits");
+    analysisManager->CreateNtuple("CaloH", "Hits");
     analysisManager->CreateNtupleDColumn("TotalEn"); // column Id = 0
-    analysisManager->CreateNtupleDColumn("EnergyVector", fEventAction->GetHadCalEdep()); // column Id = 1
-    analysisManager->CreateNtupleDColumn("Row", fEventAction->GetHadCalRow()); // column Id = 2
-    analysisManager->CreateNtupleDColumn("Column", fEventAction->GetHadCalColumn()); // column Id = 3
+    analysisManager->CreateNtupleDColumn("InitialMomentum"); // column Id = 1
+    analysisManager->CreateNtupleDColumn("InitialX"); // column Id = 2
+    analysisManager->CreateNtupleDColumn("InitialY"); // column Id = 3
+    analysisManager->CreateNtupleDColumn("EnergyVector", fEventAction->GetHadCalEdep()); // column Id = 4
+    analysisManager->CreateNtupleDColumn("Row", fEventAction->GetHadCalRow()); // column Id = 5
+    analysisManager->CreateNtupleDColumn("Column", fEventAction->GetHadCalColumn()); // column Id = 6
     analysisManager->FinishNtuple();
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "ECALntuple");
+  analysisManager->SetNtupleFileName(0, "CalontupleHits");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -62,8 +65,6 @@ void ECALRunAction::BeginOfRunAction(const G4Run* /*run*/)
   auto analysisManager = G4AnalysisManager::Instance();
 
   // Open an output file
-  // The default file name is set in B5RunAction::B5RunAction(),
-  // it can be overwritten in a macro
   analysisManager->OpenFile();
 }
 

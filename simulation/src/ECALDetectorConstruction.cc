@@ -34,7 +34,7 @@ G4VPhysicalVolume* ECALDetectorConstruction::Construct()
   G4Material* cryst_mat   = nist->FindOrBuildMaterial("G4_PbWO4");
 
   // Detector Parameters
-  G4double cryst_dX = 2.2*cm, cryst_dY = 2.2*cm, cryst_dZ = 23*cm;
+  G4double cryst_dX = crystSizeX*cm, cryst_dY = crystSizeY*cm, cryst_dZ = crystSizeZ*cm;
   G4int nb_cryst = kNofCrystals;
   G4int nb_plns = kNofPlanes;
 

@@ -88,7 +88,7 @@ void ECALEventAction::BeginOfEventAction(const G4Event*)
 void ECALEventAction::EndOfEventAction(const G4Event* event)
 {
   //
-  // Fill histograms & ntuple
+  // Fill ntuple
   //
 
   // Get analysis manager
@@ -124,6 +124,25 @@ void ECALEventAction::EndOfEventAction(const G4Event* event)
     }
     // columns 0
     analysisManager->FillNtupleDColumn(0, totalCalEdep[iDet]);
+
+    // information about primary event
+    auto primary = event->GetPrimaryVertex(0)->GetPrimary(0);
+    analysisManager->FillNtupleDColumn(1, primary->GetTotalMomentum());
+    G4double X0 = event->GetPrimaryVertex(0)->GetX0();
+    G4double Y0 = event->GetPrimaryVertex(0)->GetY0();
+    G4int Xcell = -100;
+    G4int Ycell = -100;
+    if (kNofCrystals%2 == 0){
+      Xcell = int(X0/(10*crystSizeX));
+      Ycell = int(Y0/(10*crystSizeX));
+    }
+    else{
+      Xcell = int((X0+(crystSizeX/2.))/(10*crystSizeX));
+      Ycell = int((Y0+(crystSizeY/2.))/(10*crystSizeY));
+    }
+     
+    analysisManager->FillNtupleDColumn(2, Xcell);
+    analysisManager->FillNtupleDColumn(3, Ycell);
   }
 
   analysisManager->AddNtupleRow();

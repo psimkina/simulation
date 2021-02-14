@@ -1,4 +1,5 @@
 #include "ECALPrimaryGeneratorAction.hh"
+#include "ECALConstants.hh"
 
 #include "G4RunManager.hh"
 #include "G4LogicalVolumeStore.hh"
@@ -49,7 +50,7 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
   // Set gun position
   fParticleGun
-    ->SetParticlePosition(G4ThreeVector(0., 0., -13.8*cm));
+    ->SetParticlePosition(G4ThreeVector(0., 0., -(detectSizeZ/2.)*cm));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }
