@@ -43,17 +43,17 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
 
   auto mass = particleDefinition->GetPDGMass();
-  G4double momentum = 100.*GeV;
-  G4double pp = G4UniformRand()*momentum;
-  auto X = (G4UniformRand()-0.5)*detectSizeX*cm;
-  auto Y = (G4UniformRand()-0.5)*detectSizeY*cm;
-  auto ekin = std::sqrt(pp*pp+mass*mass)-mass;
+  G4double momentum = (1.+G4UniformRand()*99.)*GeV;
+  G4double pp = momentum;
 
+  G4double X = 0.8*(G4UniformRand()-0.5)*detectSizeX;
+  G4double Y = 0.8*(G4UniformRand()-0.5)*detectSizeY;
+  auto ekin = std::sqrt(pp*pp+mass*mass)-mass;
   fParticleGun->SetParticleEnergy(ekin);
 
   // Set gun position
   fParticleGun
-    ->SetParticlePosition(G4ThreeVector(X, Y, -(detectSizeZ/2.)*cm));
+    ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(detectSizeZ/2.)*cm));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }

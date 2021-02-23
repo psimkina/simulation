@@ -123,22 +123,23 @@ void ECALEventAction::EndOfEventAction(const G4Event* event)
       fCalColumn[iDet][i] = column;
     }
     // columns 0
-    analysisManager->FillNtupleDColumn(0, totalCalEdep[iDet]);
+    analysisManager->FillNtupleDColumn(0, totalCalEdep[iDet]/GeV);
 
     // information about primary event
     auto primary = event->GetPrimaryVertex(0)->GetPrimary(0);
-    analysisManager->FillNtupleDColumn(1, primary->GetTotalMomentum());
-    G4double X0 = event->GetPrimaryVertex(0)->GetX0();
-    G4double Y0 = event->GetPrimaryVertex(0)->GetY0();
+    analysisManager->FillNtupleDColumn(1, primary->GetTotalMomentum()/GeV);
+    G4double X0 = event->GetPrimaryVertex(0)->GetX0()/cm;
+    G4double Y0 = event->GetPrimaryVertex(0)->GetY0()/cm;
+    G4cout<<"initial X0: "<< X0<< G4endl;  
     G4int Xcell = -100;
     G4int Ycell = -100;
     if (kNofCrystals%2 == 0){
-      Xcell = int(X0/(10*crystSizeX));
-      Ycell = int(Y0/(10*crystSizeX));
+      Xcell = int(X0/(crystSizeX));
+      Ycell = int(Y0/(crystSizeX));
     }
     else{
-      Xcell = int((X0+(crystSizeX/2.))/(10*crystSizeX));
-      Ycell = int((Y0+(crystSizeY/2.))/(10*crystSizeY));
+      Xcell = int((X0+(detectSizeX/2.))/(crystSizeX));
+      Ycell = int((Y0+(detectSizeY/2.))/(crystSizeY));
     }
      
     analysisManager->FillNtupleDColumn(2, Xcell);

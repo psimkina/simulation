@@ -35,8 +35,8 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
     analysisManager->CreateNtuple("CaloH", "Hits");
     analysisManager->CreateNtupleDColumn("TotalEn"); // column Id = 0
     analysisManager->CreateNtupleDColumn("InitialMomentum"); // column Id = 1
-    analysisManager->CreateNtupleDColumn("InitialX"); // column Id = 2
-    analysisManager->CreateNtupleDColumn("InitialY"); // column Id = 3
+    analysisManager->CreateNtupleDColumn("InitialColumn"); // column Id = 2
+    analysisManager->CreateNtupleDColumn("InitialRow"); // column Id = 3
     analysisManager->CreateNtupleDColumn("EnergyVector", fEventAction->GetHadCalEdep()); // column Id = 4
     analysisManager->CreateNtupleDColumn("Row", fEventAction->GetHadCalRow()); // column Id = 5
     analysisManager->CreateNtupleDColumn("Column", fEventAction->GetHadCalColumn()); // column Id = 6
@@ -44,7 +44,7 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "CalontupleHits");
+  analysisManager->SetNtupleFileName(0, "dataCaloHits");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
