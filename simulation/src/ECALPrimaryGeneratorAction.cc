@@ -53,7 +53,7 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
   // Set gun position
   fParticleGun
-    ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(detectSizeZ/2.)*cm));
+    ->SetParticlePosition(G4ThreeVector(0.*cm, 0.*cm, -(crystSizeZ/2.)*cm));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }

@@ -44,7 +44,7 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "dataCaloHits");
+  analysisManager->SetNtupleFileName(0, "detector");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

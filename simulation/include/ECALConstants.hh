@@ -4,7 +4,7 @@
 #include "globals.hh"
 
 constexpr G4int kNofCrystals = 25;
-constexpr G4int kNofPlanes = 1;
+constexpr G4int kNofPlanes = 3;
 constexpr G4int kNofCells = kNofCrystals * kNofCrystals;
 
 constexpr G4double crystSizeX = 2.2; 
