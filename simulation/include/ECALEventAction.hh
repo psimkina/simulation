@@ -26,6 +26,7 @@ public:
     std::vector<G4double>& GetHadCalEdep() { return fCalEdep[kHad]; }
     std::vector<G4double>& GetHadCalRow() { return fCalRow[kHad]; }
     std::vector<G4double>& GetHadCalColumn() { return fCalColumn[kHad]; }
+    std::vector<G4double>& GetHadCalPlane() { return fCalPlane[kHad]; }
 
 private:
     // hit collections Ids
@@ -34,6 +35,7 @@ private:
     std::array<std::vector<G4double>, kDim> fCalEdep;
     std::array<std::vector<G4double>, kDim> fCalRow;
     std::array<std::vector<G4double>, kDim> fCalColumn;
+    std::array<std::vector<G4double>, kDim> fCalPlane;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

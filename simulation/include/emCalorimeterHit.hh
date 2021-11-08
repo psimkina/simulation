@@ -23,7 +23,7 @@ class emCalorimeterHit : public G4VHit
 {
   public:
     emCalorimeterHit();
-    emCalorimeterHit(G4int iCol,G4int iRow);
+    emCalorimeterHit(G4int iCol,G4int iRow, G4int iPlane);
     emCalorimeterHit(const emCalorimeterHit &right);
     virtual ~emCalorimeterHit();
 
@@ -44,6 +44,9 @@ class emCalorimeterHit : public G4VHit
     void SetRowID(G4int z) { fRowID = z; }
     G4int GetRowID() const { return fRowID; }
 
+    void SetPlaneID(G4int z) { fPlaneID = z; }
+    G4int GetPlaneID() const { return fPlaneID; }
+
     void SetEdep(G4double de) { fEdep = de; }
     void AddEdep(G4double de) { fEdep += de; }
     G4double GetEdep() const { return fEdep; }
@@ -57,6 +60,7 @@ class emCalorimeterHit : public G4VHit
   private:
     G4int fColumnID;
     G4int fRowID;
+    G4int fPlaneID;
     G4double fEdep;
     G4ThreeVector fPos;
     G4RotationMatrix fRot;

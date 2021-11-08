@@ -70,7 +70,9 @@
 #/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 1
 # To select or override default colours (note: e+ is blue by default):
 #/vis/modeling/trajectories/list
-#/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+/vis/modeling/trajectories/drawByParticleID-0/set e+ blue
+/vis/modeling/trajectories/drawByParticleID-0/set e- yellow
+/vis/modeling/trajectories/drawByParticleID-0/set gamma green
 #
 # To superimpose all of the events from a given run:
 /vis/scene/endOfEventAction accumulate
@@ -80,4 +82,4 @@
 /vis/verbose warnings
 #
 # For file-based drivers, use this to create an empty detector view:
-#/vis/viewer/flush
+/vis/viewer/flush
