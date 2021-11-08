@@ -12,6 +12,9 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 
+//CLHEP::HepRandom::setTheSeed((unsigned)clock());
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 ECALPrimaryGeneratorAction::ECALPrimaryGeneratorAction()
@@ -37,6 +40,10 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
   // default particle kinematic
   //
+  //int seed = 0
+  //CLHEP::HepRandom::setTheSeed(seed); 
+  //G4Random::setTheSeed(seed);
+  G4Random::setTheSeed((unsigned)clock());
   auto particleDefinition
     = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
   fParticleGun->SetParticleDefinition(particleDefinition);
@@ -53,7 +60,7 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
   // Set gun position
   fParticleGun
-    ->SetParticlePosition(G4ThreeVector(0.*cm, 0.*cm, -(crystSizeZ/2.)*cm));
+    ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(crystSizeZ/2.)*cm));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }

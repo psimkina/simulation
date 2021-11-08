@@ -21,14 +21,14 @@ G4ThreadLocal G4Allocator<emCalorimeterHit>* emCalorimeterHitAllocator;
 
 emCalorimeterHit::emCalorimeterHit()
 : G4VHit(),
-  fColumnID(-1), fRowID(-1), fEdep(0.), fPos(0)
+  fColumnID(-1), fRowID(-1), fPlaneID(-1), fEdep(0.), fPos(0)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-emCalorimeterHit::emCalorimeterHit(G4int columnID,G4int rowID)
+emCalorimeterHit::emCalorimeterHit(G4int columnID,G4int rowID, G4int planeID)
 : G4VHit(),
-  fColumnID(columnID), fRowID(rowID), fEdep(0.), fPos(0)
+  fColumnID(columnID), fRowID(rowID), fPlaneID(planeID), fEdep(0.), fPos(0)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -42,6 +42,7 @@ emCalorimeterHit::emCalorimeterHit(const emCalorimeterHit &right)
 : G4VHit(),
   fColumnID(right.fColumnID),
   fRowID(right.fRowID),
+  fPlaneID(right.fPlaneID),
   fEdep(right.fEdep),
   fPos(right.fPos),
   fRot(right.fRot)
@@ -54,6 +55,7 @@ const emCalorimeterHit& emCalorimeterHit::operator=(
 {
   fColumnID = right.fColumnID;
   fRowID = right.fRowID;
+  fPlaneID = right.fPlaneID;
   fEdep = right.fEdep;
   fPos = right.fPos;
   fRot = right.fRot;
@@ -64,7 +66,7 @@ const emCalorimeterHit& emCalorimeterHit::operator=(
 
 G4bool emCalorimeterHit::operator==(const emCalorimeterHit &right) const
 {
-  return (fColumnID==right.fColumnID&&fRowID==right.fRowID);
+  return (fColumnID==right.fColumnID&&fRowID==right.fRowID&&fPlaneID==right.fPlaneID);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -100,6 +102,9 @@ const std::map<G4String,G4AttDef>* emCalorimeterHit::GetAttDefs() const
     (*store)["Row"]
       = G4AttDef("Row","Row ID","Physics","","G4int");
 
+    (*store)["Plane"]
+      = G4AttDef("Plane","Plane ID","Physics","","G4int");
+
     (*store)["Energy"]
       = G4AttDef("Energy","Energy Deposited","Physics","G4BestUnit",
                  "G4double");
@@ -124,6 +129,10 @@ std::vector<G4AttValue>* emCalorimeterHit::CreateAttValues() const
                            ""));
   values
     ->push_back(G4AttValue("Row",G4UIcommand::ConvertToString(fRowID),""));
+
+  values
+    ->push_back(G4AttValue("Plane",G4UIcommand::ConvertToString(fPlaneID),""));
+
   values
     ->push_back(G4AttValue("Energy",G4BestUnit(fEdep,"Energy"),""));
   values
@@ -136,7 +145,7 @@ std::vector<G4AttValue>* emCalorimeterHit::CreateAttValues() const
 
 void emCalorimeterHit::Print()
 {
-  G4cout << "  Cell[" << fRowID << ", " << fColumnID << "] "
+  G4cout << "  Cell[" << fRowID << ", " << fColumnID <<", " << fPlaneID << "] "
     << fEdep/MeV << " (MeV) " << fPos << G4endl;
 }
 

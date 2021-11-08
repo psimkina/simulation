@@ -37,7 +37,9 @@ void emCalorimeterSD::Initialize(G4HCofThisEvent* hce)
   // fill calorimeter hits with zero energy deposition
   for (auto column=0;column<kNofCrystals;column++) {
     for (auto row=0;row<kNofCrystals;row++) {
+      for (auto plane=0;plane<kNofPlanes;plane++) {
       fHitsCollection->insert(new emCalorimeterHit());
+    }
     }
   }
 }
@@ -52,13 +54,16 @@ G4bool emCalorimeterSD::ProcessHits(G4Step* step, G4TouchableHistory*)
   auto touchable = step->GetPreStepPoint()->GetTouchable();
   auto rowNo = touchable->GetCopyNumber(2);
   auto columnNo = touchable->GetCopyNumber(3);
-  auto hitID = kNofCrystals*columnNo+rowNo;
+  auto planeNo = touchable->GetCopyNumber(1);
+
+  auto hitID = kNofCells*planeNo+kNofCrystals*columnNo+rowNo;
   auto hit = (*fHitsCollection)[hitID];
 
   // check if it is first touch
   if (hit->GetColumnID()<0) {
     hit->SetColumnID(columnNo);
     hit->SetRowID(rowNo);
+    hit->SetPlaneID(planeNo);
     auto depth = touchable->GetHistory()->GetDepth();
     auto transform = touchable->GetHistory()->GetTransform(depth-2);
     transform.Invert();

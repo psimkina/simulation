@@ -40,11 +40,12 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
     analysisManager->CreateNtupleDColumn("EnergyVector", fEventAction->GetHadCalEdep()); // column Id = 4
     analysisManager->CreateNtupleDColumn("Row", fEventAction->GetHadCalRow()); // column Id = 5
     analysisManager->CreateNtupleDColumn("Column", fEventAction->GetHadCalColumn()); // column Id = 6
+    analysisManager->CreateNtupleDColumn("z", fEventAction->GetHadCalPlane()); // column Id = 7
     analysisManager->FinishNtuple();
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "detector");
+  analysisManager->SetNtupleFileName(0, "50e");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

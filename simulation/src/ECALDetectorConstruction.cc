@@ -43,8 +43,8 @@ G4VPhysicalVolume* ECALDetectorConstruction::Construct()
   //
   // World
   //
-  G4double world_sizeXY = 1.2*plns_dX;
-  G4double world_sizeZ  = 1.2*plns_dZ;
+  G4double world_sizeXY = 1.3*plns_dX;
+  G4double world_sizeZ  = 1.3*plns_dZ;
 
   G4Box* solidWorld =
     new G4Box("World",                       //its name
