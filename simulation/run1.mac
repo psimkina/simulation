@@ -19,8 +19,8 @@
 #/gun/particle gamma
 #/gun/energy 6 MeV
 #
-/analysis/ntuple/setFileName 0 50ev_1
-/run/beamOn 50000
+/analysis/ntuple/setFileName 0 test2
+/run/beamOn 10000
 # 
 # proton 210 MeV to the direction (0.,0.,1.)
 #

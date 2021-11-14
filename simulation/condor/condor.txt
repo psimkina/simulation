@@ -1,0 +1,18 @@
+request_memory = 4 GB
+
+log = geant4.log
+output = geant4.out
+error = geant4.error
+notification = Error
+
+should_transfer_files = Yes
+when_to_transfer_output = ON_EXIT
+
+executable = run_geant4.sh 
+arguments = $(ProcId)
+transfer_executable = True
+transfer_input_files = ECAL, run1.mac
+
++JobFlavour = "longlunch"
+
+queue 100
