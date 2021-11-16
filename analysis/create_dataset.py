@@ -2,6 +2,7 @@
 import numpy as np 
 import random
 import pandas as pd
+from tqdm import tqdm
 
 #df = pd.read_pickle('df')
 #event = pd.read_pickle('ev')
@@ -23,6 +24,11 @@ def to_numpy(df, event):
     - event: dataframe containing information about primary event. 
     """
     # Define empty numpy arrays.
+    indices = event.index.tolist()
+    n = len(indices)
+    indices = np.asarray(indices)
+    
+    
     X = np.full((n, 51, 51), 0.)
     simulated = np.full((n, 7, 7), 0.)
     center = np.full((n, 2), 0.)
@@ -30,14 +36,14 @@ def to_numpy(df, event):
     ptype = np.full((n), 0.)
     
     # Fill the numpy arrays with information from dataframe.  
-    for ind in range(n):
-        if (ind%10000 == 0): print("samples processed:", ind)
+    for s, ind in tqdm(enumerate(indices)):
+        #if (ind%1000 == 0): print("samples processed:", ind)
         row = df.loc[ind].Row.astype(int)
         col = df.loc[ind].Column.astype(int)
-        X[ind, row, col] = df.loc[ind].EnergyVector
-        center[ind, 0], center[ind, 1] = event.loc[ind].InitialRow, event.loc[ind].InitialColumn
-        energy[ind] = event.loc[ind].InitialMomentum
-        ptype[ind] = event.loc[ind].ParticleType
+        X[s, row, col] = df.loc[ind].EnergyVector
+        center[s, 0], center[s, 1] = event.loc[ind].InitialRow, event.loc[ind].InitialColumn
+        energy[s] = event.loc[ind].InitialMomentum
+        ptype[s] = event.loc[ind].ParticleType
         
         row_init = round(event.loc[ind].InitialRow).astype(int)
         col_init = round(event.loc[ind].InitialColumn).astype(int)
@@ -49,7 +55,7 @@ def to_numpy(df, event):
         
         k = one_event.Row.astype(int) - row_init + 3
         l = one_event.Column.astype(int) - col_init + 3
-        simulated[ind, k, l] = one_event.EnergyVector
+        simulated[s, k, l] = one_event.EnergyVector
 
     return X, simulated, center, energy, ptype
 

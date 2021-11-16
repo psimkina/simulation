@@ -3,9 +3,10 @@ import numpy as np
 import pandas as pd
 
 def create_df(filename="splitted_0-24999_events.root"):
+    print(filename)
     # Load ntuple from the files and convert it to pandas dataframe.
     #upFilePi = uproot.open('~/calo_sim/simulation/build/pions.root')
-    with uproot.open("~/calo_sim/simulation/build/data/"+str(filename)) as file:
+    with uproot.open(str(filename)) as file:
         #treePi = upFilePi['CaloH']
         treePh = file['CaloH']
         #dfPi = treePi.pandas.df()
