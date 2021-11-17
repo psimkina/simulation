@@ -1,0 +1,20 @@
+
+request_memory = 4 GB
+request_disk = 50 GB
+
+log = pyt.log
+output = pyt.out
+error = pyt.error
+notification = Error
+
+
+should_transfer_files = Yes
+when_to_transfer_output = ON_EXIT
+
+executable = run_python.sh 
+transfer_executable = True
+transfer_input_files = convert_root_numpy.py, ntuple_loader.py, create_dataset.py
+
++JobFlavour = "workday"
+
+queue

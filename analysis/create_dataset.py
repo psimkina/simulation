@@ -2,7 +2,6 @@
 import numpy as np 
 import random
 import pandas as pd
-from tqdm import tqdm
 
 #df = pd.read_pickle('df')
 #event = pd.read_pickle('ev')
@@ -36,8 +35,8 @@ def to_numpy(df, event):
     ptype = np.full((n), 0.)
     
     # Fill the numpy arrays with information from dataframe.  
-    for s, ind in tqdm(enumerate(indices)):
-        #if (ind%1000 == 0): print("samples processed:", ind)
+    for s, ind in enumerate(indices):
+        if (ind%1000 == 0): print("samples processed:", ind)
         row = df.loc[ind].Row.astype(int)
         col = df.loc[ind].Column.astype(int)
         X[s, row, col] = df.loc[ind].EnergyVector
@@ -45,8 +44,8 @@ def to_numpy(df, event):
         energy[s] = event.loc[ind].InitialMomentum
         ptype[s] = event.loc[ind].ParticleType
         
-        row_init = round(event.loc[ind].InitialRow).astype(int)
-        col_init = round(event.loc[ind].InitialColumn).astype(int)
+        row_init = round(event.loc[ind].InitialRow)
+        col_init = round(event.loc[ind].InitialColumn)
         
         # Change the position of the cluster, so that it is in the center of the numpy array. 
         one_event = df.loc[ind]

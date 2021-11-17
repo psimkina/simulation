@@ -3,9 +3,9 @@ from create_dataset import to_numpy
 
 import numpy as np
 
-for i in range(0,101):
+for i in range(37,100):
     df, event = create_df("/eos/user/p/psimkina/clustering_data/ntuple_{}.root".format(i))
-    print(i)
+    print('File number:', i)
     X, sim, cent, en, _ = to_numpy(df, event)
     
     np.save('/eos/user/p/psimkina/clustering_data/numpy/X-'+str(i), X)
