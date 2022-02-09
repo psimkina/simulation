@@ -18,7 +18,5 @@ cmake -DGeant4_DIR=/cvmfs/geant4.cern.ch/geant4/10.7/x86_64-centos7-gcc9-optdeb-
 make 
 ./ECAL ../run1.mac
 
-'''
 Submit job on condor.
-'''
 condor_submit condor.txt
