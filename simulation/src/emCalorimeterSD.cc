@@ -51,6 +51,19 @@ G4bool emCalorimeterSD::ProcessHits(G4Step* step, G4TouchableHistory*)
   auto edep = step->GetTotalEnergyDeposit();
   if (edep==0.) return true;
 
+  // track information
+  G4Track* track = step->GetTrack();
+  G4int pid = track->GetParentID();
+  //G4int pid = 0;
+
+  G4String name = track->GetDefinition()->GetParticleName();
+
+  //  if (pid < 2){
+  //  std:: cout << "in the if statement" << std::endl;
+  // std::cout <<"pid: " << pid << std::endl;
+  // std::cout <<"particle: " << name<< std::endl;
+  // };
+  
   auto touchable = step->GetPreStepPoint()->GetTouchable();
   auto rowNo = touchable->GetCopyNumber(2);
   auto columnNo = touchable->GetCopyNumber(3);

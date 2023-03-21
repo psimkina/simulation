@@ -41,11 +41,18 @@ ECALRunAction::ECALRunAction(ECALEventAction* eventAction)
     analysisManager->CreateNtupleDColumn("Row", fEventAction->GetHadCalRow()); // column Id = 5
     analysisManager->CreateNtupleDColumn("Column", fEventAction->GetHadCalColumn()); // column Id = 6
     analysisManager->CreateNtupleDColumn("z", fEventAction->GetHadCalPlane()); // column Id = 7
+    analysisManager->CreateNtupleDColumn("x1"); // column Id = 8
+    analysisManager->CreateNtupleDColumn("x2"); // column Id = 9
+    analysisManager->CreateNtupleDColumn("y1"); // column Id = 10                                                                                                                                                                                                             
+    analysisManager->CreateNtupleDColumn("y2"); // column Id = 11   
+    analysisManager->CreateNtupleDColumn("E1"); // column Id = 12
+    analysisManager->CreateNtupleDColumn("E2"); // column Id = 13
+    
     analysisManager->FinishNtuple();
   }
 
   // Set ntuple output file
-  analysisManager->SetNtupleFileName(0, "50e");
+  analysisManager->SetNtupleFileName(0, "high_energy_250GeV");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

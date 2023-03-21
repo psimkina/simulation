@@ -2,6 +2,7 @@
 #include "ECALPrimaryGeneratorAction.hh"
 #include "ECALEventAction.hh"
 #include "ECALRunAction.hh"
+#include "ECALSteppingAction.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -31,6 +32,8 @@ void ECALActionInitialization::Build() const
   SetUserAction(eventAction);
 
   SetUserAction(new ECALRunAction(eventAction));
+  auto steppingAction = new ECALSteppingAction;
+  SetUserAction(steppingAction);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

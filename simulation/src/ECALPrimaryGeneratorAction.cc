@@ -45,24 +45,34 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //G4Random::setTheSeed(seed);
   G4Random::setTheSeed((unsigned)clock());
   auto particleDefinition
-    = G4ParticleTable::GetParticleTable()->FindParticle("gamma");
+    = G4ParticleTable::GetParticleTable()->FindParticle("pi0");
   fParticleGun->SetParticleDefinition(particleDefinition);
+  // G4double angle = 3.*CLHEP::pi/180.;
+  //std::cout << "angle " << sin(angle) << std:: endl;
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
 
   auto mass = particleDefinition->GetPDGMass();
-  G4double momentum = (1.+G4UniformRand()*99.)*GeV;
+  //G4double momentum = (1.+G4UniformRand()*99.)*GeV;
+  G4double momentum = 60.*GeV;
   G4double pp = momentum;
 
   G4double X = 0.8*(G4UniformRand()-0.5)*detectSizeX;
   G4double Y = 0.8*(G4UniformRand()-0.5)*detectSizeY;
+  //G4double X = 0.;
+  //G4double Y = 0.;
   auto ekin = std::sqrt(pp*pp+mass*mass)-mass;
   fParticleGun->SetParticleEnergy(ekin);
 
   // Set gun position
-  fParticleGun
-    ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(crystSizeZ/2.)*cm));
+  //fParticleGun
+  //  ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(crystSizeZ/2.)*cm));
 
+  fParticleGun                                                                                                                                                                              
+    ->SetParticlePosition(G4ThreeVector(0*cm, 0*cm, -(detectSizeZ/2 + 130.)*cm));  
+  
   fParticleGun->GeneratePrimaryVertex(anEvent);
-}
+
+  std::cout << "Z size: " << detectSizeZ/2 + 130 << std::endl;
+   }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

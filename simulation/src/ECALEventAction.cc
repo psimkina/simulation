@@ -134,7 +134,11 @@ void ECALEventAction::EndOfEventAction(const G4Event* event)
     analysisManager->FillNtupleDColumn(1, primary->GetTotalMomentum()/GeV);
     G4double X0 = event->GetPrimaryVertex(0)->GetX0()/cm;
     G4double Y0 = event->GetPrimaryVertex(0)->GetY0()/cm;
-    G4cout<<"initial X0: "<< X0<< G4endl;  
+    G4double Z0 = event->GetPrimaryVertex(0)->GetZ0()/cm;
+    G4cout<<"initial X0: "<< X0<< G4endl;
+    G4cout<<"initial Y0: "<< Y0<< G4endl;
+    G4cout<<"initial Z0: "<< Z0<< G4endl;
+
     G4double Xcell = -100.;
     G4double Ycell = -100.;
     if (kNofCrystals%2 == 0){
@@ -145,11 +149,11 @@ void ECALEventAction::EndOfEventAction(const G4Event* event)
       Xcell = (X0+(detectSizeX/2.))/(crystSizeX);
       Ycell = (Y0+(detectSizeY/2.))/(crystSizeY);
     }
-     
+    
     analysisManager->FillNtupleDColumn(2, Xcell);
     analysisManager->FillNtupleDColumn(3, Ycell);
-  }
-
+      G4cout<<"X_cell: "<< Xcell<< G4endl; 
+  } 
   analysisManager->AddNtupleRow();
 
   //
