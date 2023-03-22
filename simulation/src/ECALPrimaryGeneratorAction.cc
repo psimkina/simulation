@@ -45,7 +45,7 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //G4Random::setTheSeed(seed);
   G4Random::setTheSeed((unsigned)clock());
   auto particleDefinition
-    = G4ParticleTable::GetParticleTable()->FindParticle("pi0");
+    = G4ParticleTable::GetParticleTable()->FindParticle("e-");
   fParticleGun->SetParticleDefinition(particleDefinition);
   // G4double angle = 3.*CLHEP::pi/180.;
   //std::cout << "angle " << sin(angle) << std:: endl;
@@ -67,9 +67,10 @@ void ECALPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //fParticleGun
   //  ->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(crystSizeZ/2.)*cm));
 
-  fParticleGun                                                                                                                                                                              
-    ->SetParticlePosition(G4ThreeVector(0*cm, 0*cm, -(detectSizeZ/2 + 130.)*cm));  
-  
+  //fParticleGun                                                                                                                                                                              
+  //    ->SetParticlePosition(G4ThreeVector(0*cm, 0*cm, -(detectSizeZ/2 + 130.)*cm));  
+
+  fParticleGun->SetParticlePosition(G4ThreeVector(X*cm, Y*cm, -(detectSizeZ/2)*cm));
   fParticleGun->GeneratePrimaryVertex(anEvent);
 
   std::cout << "Z size: " << detectSizeZ/2 + 130 << std::endl;
